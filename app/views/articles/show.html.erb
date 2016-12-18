@@ -6,6 +6,7 @@
   <% end %>
 </p>
 <br>
+<p><%= image_tag @article.image.url, class: "image_medium" %></p>
 <p><%= @article.body %></p>
 <h3><%= @article.comments.size %> Comments</h3>
 <%= render partial: "articles/comment", collection: @article.comments %>

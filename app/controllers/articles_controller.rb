@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+    include ArticlesHelper
+
     def index
         @articles = Article.all
     end
@@ -24,18 +26,11 @@ class ArticlesController < ApplicationController
     end
     def edit
         @article = Article.find(params[:id])
-        
     end
     def update
         @article = Article.find(params[:id])
         @article.update(article_params)
         flash.notice = "Article '#{@article.title}' updated."
         redirect_to article_path(@article)
-    end
-
-    private
-    
-    def article_params
-        params.require(:article).permit(:title, :body, :tag_list)
     end
 end
