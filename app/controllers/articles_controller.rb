@@ -1,5 +1,15 @@
 class ArticlesController < ApplicationController
+    before_filter :require_login, except: [:new, :index, :show]
+
     include ArticlesHelper
+
+    def require_login
+        unless logged_in?
+            flash.notice = "You must login first."
+            redirect_to new_author_session_path
+            return false
+        end
+    end
 
     def index
         @articles = Article.all

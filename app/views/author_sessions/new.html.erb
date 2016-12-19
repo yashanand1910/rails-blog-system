@@ -1,0 +1,20 @@
+<h1>Login</h1>
+<%= form_tag author_sessions_path, method: :post do %>
+	<div class="field">
+	<%= label_tag :email %>
+	<%= text_field_tag :email %>
+	<br><br>
+	</div>
+	<div class="field">
+	<%= label_tag :password %>
+	<%= password_field_tag :password %>
+	<br><br>
+	</div>
+	<div class="actions">
+		<%= submit_tag "Login" %>
+	</div>
+<% end %>
+<br>
+<%= button_to "Create account", new_author_path, method: :get %>
+<br>
+<%= link_to 'All articles', articles_path %>
